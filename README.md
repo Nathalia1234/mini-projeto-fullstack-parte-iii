@@ -42,6 +42,11 @@ src/
 │   └── ui/                 # Componentes shadcn
 ├── context/
 │   └── AuthContext.tsx     # Context de autenticação
+├── hooks/
+|   ├── use-mobile.tsx
+|   ├── use-toast.ts
+├── lib/
+|   ├── utils.ts
 ├── pages/
 │   ├── Index.tsx           # Página inicial (landing)
 │   ├── Register.tsx        # Cadastro de usuário
@@ -49,7 +54,9 @@ src/
 │   ├── Dashboard.tsx       # Área logada (CRUD notas)
 │   └── NotFound.tsx        # 404
 ├── App.tsx                 # Rotas principais
-└── main.tsx                # Entry point
+├── App.css
+├── index.css
+└── main.tsx                
 ```
 
 
