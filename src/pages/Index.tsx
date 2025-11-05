@@ -55,7 +55,7 @@ const Index = () => {
 
           <div className="pt-8 border-t">
             <p className="text-sm text-muted-foreground">
-              Fullstack CRUD App • React + JWT + REST API
+              NotesApp • React  •  JWT  •  REST API
             </p>
           </div>
         </CardContent>
