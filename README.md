@@ -18,19 +18,6 @@ Frontend completo em React para o projeto **Mini-Projeto Fullstack – Parte III
 - ✅ **Proteção de rotas** automática
 - ✅ **Redirecionamento** para login em token expirado
 
-## 🎨 Design
-
-Interface moderna e minimalista inspirada em:
-- **Notion** (simplicidade e organização)
-- **Linear** (polish e atenção aos detalhes)
-- **Vercel Dashboard** (clean e profissional)
-
-**Características visuais:**
-- Paleta de cores suaves (azul/indigo como primária)
-- Animações sutis e transições suaves
-- Cards com sombras e bordas arredondadas
-- Tipografia clara e hierarquia visual
-- Sistema de design consistente
 
 ## 🛠️ Tecnologias
 
@@ -65,39 +52,6 @@ src/
 └── main.tsx                # Entry point
 ```
 
-## 🚀 Como Executar
-
-### 1. Instalar dependências
-
-```bash
-npm install
-```
-
-### 2. Configurar variáveis de ambiente
-
-Crie um arquivo `.env` na raiz do projeto:
-
-```env
-VITE_API_URL=http://localhost:3000
-```
-
-**Importante:** Altere a URL para o endereço do seu backend (local ou produção).
-
-### 3. Executar em desenvolvimento
-
-```bash
-npm run dev
-```
-
-O aplicativo estará disponível em `http://localhost:8080`
-
-### 4. Build para produção
-
-```bash
-npm run build
-```
-
-Os arquivos otimizados estarão na pasta `dist/`
 
 ## 🔗 Integração com Backend
 
@@ -150,35 +104,10 @@ A aplicação é totalmente responsiva e funciona em:
 
 ## 🎥 Demo
 
-Para gravar o vídeo de demonstração, siga este roteiro:
-
-1. ✅ Abrir a página inicial
-2. ✅ Criar uma nova conta (Register)
-3. ✅ Fazer login
-4. ✅ Criar uma nota
-5. ✅ Editar a nota
-6. ✅ Deletar a nota
-7. ✅ Fazer logout
-8. ✅ Tentar acessar `/dashboard` sem login (deve redirecionar)
-9. ✅ Fazer login novamente
 
 ## 🚢 Deploy no Vercel
 
-### Via CLI:
 
-```bash
-npm install -g vercel
-vercel
-```
-
-### Via Git (recomendado):
-
-1. Push do código para GitHub
-2. Importar no Vercel Dashboard
-3. Configurar variável de ambiente `VITE_API_URL`
-4. Deploy automático
-
-**Importante:** Lembre-se de configurar a variável `VITE_API_URL` no Vercel apontando para a URL do seu backend em produção.
 
 ## 📚 Bibliotecas Utilizadas
 
@@ -189,20 +118,6 @@ vercel
 - **tailwindcss** - Utility-first CSS
 - **@radix-ui** - Componentes acessíveis (via shadcn)
 
-## 💡 Próximas Melhorias
 
-- [ ] Dark mode toggle
-- [ ] Paginação de notas
-- [ ] Busca e filtros
-- [ ] Categorias/tags para notas
-- [ ] Editor Markdown
-- [ ] Compartilhamento de notas
-- [ ] PWA (Progressive Web App)
 
-## 📄 Licença
 
-Este projeto é parte do **Mini-Projeto Fullstack – Parte III** para fins educacionais.
-
----
-
-**Desenvolvido com ❤️ usando React + TypeScript + Tailwind CSS**
