@@ -78,7 +78,7 @@ mini-projeto-fullstack-parte-iii/
 ├── .gitignore
 ├── index.html
 ├── package-lock.json
-└──  package.json
+└── package.json
 
 ```
 
