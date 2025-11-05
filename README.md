@@ -98,18 +98,20 @@ O frontend espera que o backend forneça os seguintes endpoints:
 
 ### Autenticação
 
-| Endpoint | Método | Descrição | Auth |
-|----------|--------|-----------|------|
-| `/register` | POST | Cadastra novo usuário | Não |
-| `/login` | POST | Realiza login e retorna token JWT | Não |
+| Endpoint / Rota | Método | Descrição | Autenticação |
+|:--:|:--|:--|:--:|
+| `/register` | POST | Cadastra novo usuário | ❌ |
+| `/login` | POST | Realiza login e retorna token JWT | ❌ |
 
 ### Notas
-| Endpoint | Método | Descrição | Auth |
-|----------|--------|-----------|------|
-| `/notes` | GET | Lista todas as notas do usuário autenticado | Sim |
-| `/notes` | POST | Cria uma nova nota | Sim |
-| `/notes/:id` | PUT | Atualiza todos os dados de uma nota | Sim |
-| `/notes/:id` | DELETE | Remove uma nota do usuário autenticado | Sim |
+| Endpoint  / Rota| Método | Descrição | Autenticação |
+|:--:|:--|:--|:--:|
+| `/notes` | POST | Cria uma nova nota |    ✅   |
+| `/notes` | GET | Lista todas as notas do usuário autenticado | ✅ |
+| `/notes?title=...` | GET | Filtra notas por título	 | ✅ |
+| `/notes/:id` | PUT | Atualiza todos os dados de uma nota existente | ✅ |
+| `/notes/:id` | PATCH | Atualiza parcialmente uma nota | ✅ |
+| `/notes/:id` | DELETE | Remove uma nota do usuário autenticado | ✅ |
 
 ---
 
