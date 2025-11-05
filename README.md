@@ -1,26 +1,32 @@
-# 🎯 NotesApp - Frontend React + JWT
+#  NotesApp - Frontend React + JWT
+---
+## 🟣 Descrição
 
-## 📋 Descrição
+O **NotesApp** é uma aplicação fullstack desenvolvida com **React** e **Node.js** que permite ao usuário criar, visualizar, editar e excluir notas de forma simples e segura.  
 
-Frontend completo em React para o projeto **Mini-Projeto Fullstack – Parte III**, integrado com backend REST API usando autenticação JWT.
+O projeto integra frontend e backend com autenticação **JWT**, garantindo acesso restrito às rotas protegidas.
 
-## ✨ Funcionalidades
+A interface foi desenvolvida com **Tailwind CSS** e componentes **shadcn/ui**, inspirada em designs modernos como Notion e Vercel Dashboard.
 
-- ✅ **Cadastro de usuários** com validação
-- ✅ **Login com JWT** e armazenamento seguro
-- ✅ **Dashboard protegido** com autenticação
-- ✅ **CRUD completo de notas** (criar, listar, editar, deletar)
-- ✅ **Feedback visual** com toasts (sucesso/erro)
-- ✅ **Loading states** em todas as requisições
-- ✅ **Logout** com limpeza de sessão
-- ✅ **Página 404** personalizada
-- ✅ **Design responsivo** (mobile, tablet, desktop)
-- ✅ **Proteção de rotas** automática
-- ✅ **Redirecionamento** para login em token expirado
+---
+## 🟣 Funcionalidades
 
+- ✅ Cadastro e autenticação de usuários com JWT  
+- ✅ Login e logout com controle de sessão  
+- ✅ CRUD completo de notas (criar, visualizar, editar e excluir)  
+- ✅ Busca de notas por título  
+- ✅ Feedback visual com toasts (sucesso e erro)  
+- ✅ Indicadores de carregamento (loading states)  
+- ✅ Proteção de rotas para usuários autenticados  
+- ✅ Redirecionamento automático em token expirado  
+- ✅ Página 404 personalizada  
+- ✅ Layout responsivo para mobile, tablet e desktop 
 
-## 🛠️ Tecnologias
+---
 
+## 🟣 Tecnologias Utilizadas
+
+**Frontend**
 - **React 18** com TypeScript
 - **React Router DOM** para navegação
 - **Axios** para requisições HTTP
@@ -30,10 +36,18 @@ Frontend completo em React para o projeto **Mini-Projeto Fullstack – Parte III
 - **Sonner** para notificações toast
 - **Context API** para gerenciamento de autenticação
 
-## 📁 Estrutura do Projeto
+---
+
+## 🟣 Estrutura de Pastas
+
+Abaixo está a organização dos arquivos e diretórios principais do projeto:
+
 
 ```
-src/
+mini-projeto-fullstack-parte-iii/
+├── node_modules
+├── public 
+├── src/
 ├── api/
 │   └── api.ts              # Configuração Axios + endpoints
 ├── components/
@@ -45,7 +59,7 @@ src/
 ├── hooks/
 |   ├── use-mobile.tsx
 |   ├── use-toast.ts
-├── lib/
+|── lib/
 |   ├── utils.ts
 ├── pages/
 │   ├── Index.tsx           # Página inicial (landing)
@@ -56,74 +70,113 @@ src/
 ├── App.tsx                 # Rotas principais
 ├── App.css
 ├── index.css
-└── main.tsx                
+├── main.tsx          
+└── vite-env.d.ts
+├── .env
+├── .env.mongodb
+├── .env.postgresql     
+├── .gitignore
+├── index.html
+├── package-lock.json
+└──  package.json
+
 ```
 
+---
 
-## 🔗 Integração com Backend
+## 🟣 Integração com Backend
+
+O frontend consome os endpoints do backend hospedado em produção.  
+
+A aplicação será  integrada com o backend **MongoDB**  e **PostgreSQL**:
+
+- API com PostgreSQL: https://pg-notes.nathaliaohana.dev
+
+- API com MongoDB: https://notes.nathaliaohana.dev
 
 O frontend espera que o backend forneça os seguintes endpoints:
 
+### Autenticação
+
 | Endpoint | Método | Descrição | Auth |
 |----------|--------|-----------|------|
-| `/register` | POST | Cadastro de usuário | Não |
-| `/login` | POST | Login (retorna token JWT) | Não |
-| `/notes` | GET | Listar todas as notas | Sim |
-| `/notes` | POST | Criar nova nota | Sim |
-| `/notes/:id` | PUT | Atualizar nota | Sim |
-| `/notes/:id` | DELETE | Deletar nota | Sim |
+| `/register` | POST | Cadastra novo usuário | Não |
+| `/login` | POST | Realiza login e retorna token JWT | Não |
 
-### Formato esperado do token JWT
+### Notas
+| Endpoint | Método | Descrição | Auth |
+|----------|--------|-----------|------|
+| `/notes` | GET | Lista todas as notas do usuário autenticado | Sim |
+| `/notes` | POST | Cria uma nova nota | Sim |
+| `/notes/:id` | PUT | Atualiza todos os dados de uma nota | Sim |
+| `/notes/:id` | DELETE | Remove uma nota do usuário autenticado | Sim |
 
-O backend deve retornar no login:
+---
 
-```json
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "user": {
-    "id": "123",
-    "name": "João Silva",
-    "email": "joao@email.com"
-  }
-}
+## 🟣 Variáveis de Ambiente (.env)
+
+**.env.local**:
+```env
+VITE_API_URL=http://localhost:3000
+VITE_BACKEND_TYPE=local
 ```
 
-O token é enviado automaticamente no header de todas as requisições autenticadas:
+**.env.mongodb**:
 
+```env
+VITE_API_URL=https://mini-projeto-fullstack-parte2.vercel.app/
+VITE_BACKEND_TYPE=mongodb
 ```
-Authorization: Bearer <token>
+**.env.postgresql**:
+```env
+VITE_API_URL=https://backend-express-postgresql-flame.vercel.app/
+VITE_BACKEND_TYPE=postgresql
 ```
 
-## 🔒 Segurança
+---
+
+## 🟣  Links de Deploy [Em Andamento]
+
+- **Frontend + MongoDB:** [https://frontend-mongodb.vercel.app](https://frontend-mongodb.vercel.app)
+- **Frontend + PostgreSQL:** [https://frontend-postgresql.vercel.app](https://frontend-postgresql.vercel.app)
+
+
+---
+
+## 🟣 Segurança
 
 - Token JWT armazenado no **LocalStorage**
 - Interceptor Axios adiciona token automaticamente
-- Redirecionamento para `/login` em token expirado (401)
-- Validação de campos no frontend
+- Redirecionamento automático para **/login** em caso de erro **401**
+- Validação de campos obrigatórios
 - Proteção de rotas com `ProtectedRoute`
 
-## 📱 Responsividade
+---
 
-A aplicação é totalmente responsiva e funciona em:
+## 🟣 Responsividade
+
+A aplicação é totalmente responsiva e adaptável, funciona em:
 - 📱 **Mobile** (< 768px)
 - 📱 **Tablet** (768px - 1024px)
 - 💻 **Desktop** (> 1024px)
 
-## 🎥 Demo
+---
+
+## 🟣 Vídeo de Demonstração
+
+Vídeo de 3 minutos foi gravado demonstrando:
+
+- Telas funcionando (cadastro, login, área logada);
+
+- Demonstração de integração com backend em ambiente local e de produção;
+
+- Feedbacks de erro, sucesso e logout (toasts).
 
 
-## 🚢 Deploy no Vercel
+👉 [Clique aqui para assistir no Google Drive]()
 
+--- 
 
-
-## 📚 Bibliotecas Utilizadas
-
-- **axios** - Cliente HTTP
-- **react-router-dom** - Roteamento
-- **sonner** - Notificações toast
-- **lucide-react** - Ícones
-- **tailwindcss** - Utility-first CSS
-- **@radix-ui** - Componentes acessíveis (via shadcn)
 
 
 
