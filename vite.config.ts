@@ -5,6 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
+
   // Define qual backend usar com base no modo
   const apiTargets: Record<string, string> = {
     mongodb: "https://mini-projeto-fullstack-parte2.vercel.app/",         // Backend MongoDB (produção)
@@ -13,7 +14,7 @@ export default defineConfig(({ mode }) => {
 
   const target = apiTargets[mode] || "http://localhost:3000"; // fallback local
 
-  console.log(`🔗 Conectando ao backend: ${target}`);
+  console.log(`✅ Conectando ao backend: ${target}`);
 
   return {
     server: {

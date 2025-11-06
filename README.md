@@ -83,6 +83,109 @@ mini-projeto-fullstack-parte-iii/
 ```
 
 ---
+## 🟣 Instruções de Instalação e Uso
+
+Siga os passos abaixo para executar o projeto localmente:
+
+### 1. Clonar o Repositório
+
+Clone este repositório em sua máquina local utilizando o Git:
+
+```bash
+git clone https://github.com/Nathalia1234/mini-projeto-fullstack-parte-iii.git
+```
+
+Em seguida, acesse a pasta do projeto:
+```bash
+cd mini-projeto-fullstack-parte-iii
+```
+
+
+### 2. Instalar Dependências
+
+Instale as dependências do projeto com o comando:
+
+```bash
+npm install
+```
+
+### 3. Configurar o Arquivo .env
+
+O projeto utiliza diferentes arquivos de ambiente para cada banco de dados.
+
+Selecione o ambiente desejado:
+- MongoDB local → .env.mongodb
+- PostgreSQL local → .env.postgresql
+- Local (teste) → .env.local
+
+Exemplo de variável principal esperada:
+```bash
+VITE_API_URL=http://localhost:3000
+```
+
+### 4. Executar o Projeto Localmente
+
+Para rodar o frontend, utilize um dos comandos abaixo:
+
+**MongoDB**
+```bash
+npm run dev -- --mode mongodb
+```
+
+**PostgreSQL**
+```bash
+npm run dev -- --mode postgresql
+```
+
+O projeto iniciará na porta 8080 ou 5173, dependendo da configuração do Vite.
+
+Acesse no navegador:
+```bash
+http://localhost:8080
+```
+
+### 5. Executar o Backend
+
+Se desejar testar também o backend localmente:
+
+**MongoDB**
+```bash
+cd ../mini-projeto-fullstack-parte2
+npm start
+```
+
+**PostgreSQL**
+```bash
+cd ../backend-express-postgresql
+npm run dev:local
+```
+
+### 6. Testar as Funcionalidades
+
+No navegador, teste as seguintes ações:
+
+1. Cadastrar um novo usuário
+2. Fazer login com o usuário cadastrado
+3. Criar Nota
+4. Editar Nota
+5. Excluir Nota
+6. Buscar Nota pelo Título
+7. Fazer Logout
+
+
+### 7. Executar em Produção
+
+Após o deploy no Vercel, o projeto pode ser acessado pelos seguintes links:
+
+- **Frontend + MongoDB:** [https://frontend-mongodb.vercel.app](https://frontend-mongodb.vercel.app)
+- **Frontend + PostgreSQL:** [https://frontend-postgresql.vercel.app](https://frontend-postgresql.vercel.app)
+
+
+### 8. Encerrar o Servidor
+
+Para encerrar o servidor local, utilize ```Ctrl + C``` no terminal.
+
+--- 
 
 ## 🟣 Integração com Backend
 
@@ -96,7 +199,7 @@ A aplicação será  integrada com o backend **MongoDB**  e **PostgreSQL**:
 
 O frontend espera que o backend forneça os seguintes endpoints:
 
-### Autenticação
+### Autenticação do Usuário
 
 | Endpoint / Rota | Método | Descrição | Autenticação |
 |:--:|:--|:--|:--:|
@@ -134,14 +237,6 @@ VITE_BACKEND_TYPE=mongodb
 VITE_API_URL=https://backend-express-postgresql-flame.vercel.app/
 VITE_BACKEND_TYPE=postgresql
 ```
-
----
-
-## 🟣  Links de Deploy [Em Andamento]
-
-- **Frontend + MongoDB:** [https://frontend-mongodb.vercel.app](https://frontend-mongodb.vercel.app)
-- **Frontend + PostgreSQL:** [https://frontend-postgresql.vercel.app](https://frontend-postgresql.vercel.app)
-
 
 ---
 
