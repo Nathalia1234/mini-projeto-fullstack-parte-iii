@@ -177,8 +177,9 @@ No navegador, teste as seguintes ações:
 
 Após o deploy no Vercel, o projeto pode ser acessado pelos seguintes links:
 
-- **Frontend + MongoDB:** [https://frontend-mongodb.vercel.app](https://frontend-mongodb.vercel.app)
-- **Frontend + PostgreSQL:** [https://frontend-postgresql.vercel.app](https://frontend-postgresql.vercel.app)
+- **Frontend + MongoDB:** [https://app-notes.nathaliaohana.dev/](https://app-notes.nathaliaohana.dev/)
+
+- **Frontend + PostgreSQL:** [https://app-notes-pg.nathaliaohana.dev/](https://app-notes-pg.nathaliaohana.dev/)
 
 
 ### 8. Encerrar o Servidor
