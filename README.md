@@ -2,8 +2,6 @@
 ---
 ## 🟣 Descrição
 
-## 🟣 Descrição
-
 O **NotesApp** é uma aplicação web desenvolvida em **React** que consome uma **API Node.js/Express** com autenticação **JWT**, permitindo ao usuário **criar, visualizar, editar e excluir notas** de forma simples e segura.  
 
 A aplicação foi projetada para se integrar a **dois backends distintos** - um utilizando **MongoDB** e outro **PostgreSQL** - possibilitando testar e comparar o comportamento da mesma interface com diferentes bancos de dados.  
