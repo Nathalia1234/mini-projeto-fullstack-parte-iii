@@ -283,19 +283,15 @@ O frontend identifica automaticamente qual backend utilizar de acordo com o arqu
 **Exemplo de resposta de login bem-sucedido:**
 ```json
 {
-"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-"user": {
- "id": "123",
- "name": "Nathalia Ohana",
- "email": "nathalia@email.com"
-}
+    "message": "Login realizado com sucesso!",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
 
-**Exemplo de resposta de erro:**
+**Exemplo de resposta de email não cadastrado:**
 ```json
 {
-  "error": "Invalid credentials"
+  "error": "E-mail não cadastrado"
 }
 ```
 
