@@ -168,8 +168,8 @@ No navegador, teste as seguintes ações:
 2. Fazer login com o usuário cadastrado
 3. Criar Nota
 4. Editar Nota
-5. Excluir Nota
-6. Buscar Nota pelo Título
+5. Buscar Nota pelo Título
+6. Excluir Nota
 7. Fazer Logout
 
 
