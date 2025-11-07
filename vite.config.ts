@@ -8,8 +8,8 @@ export default defineConfig(({ mode }) => {
 
   // Define qual backend usar com base no modo
   const apiTargets: Record<string, string> = {
-    mongodb: "https://mini-projeto-fullstack-parte2.vercel.app/",         // Backend MongoDB (produção)
-    postgresql: "https://backend-express-postgresql-flame.vercel.app/", // Backend PostgreSQL (produção)
+    mongodb: "https://notes.nathaliaohana.dev",         // Backend MongoDB (produção)
+    postgresql: "https://notes-pg.nathaliaohana.dev", // Backend PostgreSQL (produção)
   };
 
   const target = apiTargets[mode] || "http://localhost:3000"; // fallback local

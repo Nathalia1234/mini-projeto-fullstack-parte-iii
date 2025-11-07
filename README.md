@@ -178,12 +178,12 @@ Após definir o `.env` desejado, execute o comando:
 ```bash
 npm run dev
 ```
-O servidor local do Vite iniciará na porta padrão (geralmente 5173).
+O servidor local do Vite iniciará na porta padrão (geralmente 5173 ou 8080).
 
 Acesse o projeto em:
 
 ```bash
-http://localhost:5173
+http://localhost:5173 ou http://localhost:8080
 ```
 
 ### 5. Executar o Backend (opcional)
