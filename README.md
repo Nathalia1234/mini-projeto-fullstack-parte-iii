@@ -2,82 +2,130 @@
 ---
 ## 🟣 Descrição
 
-O **NotesApp** é uma aplicação fullstack desenvolvida com **React** e **Node.js** que permite ao usuário criar, visualizar, editar e excluir notas de forma simples e segura.  
+## 🟣 Descrição
 
-O projeto integra frontend e backend com autenticação **JWT**, garantindo acesso restrito às rotas protegidas.
+O **NotesApp** é uma aplicação web desenvolvida em **React** que consome uma **API Node.js/Express** com autenticação **JWT**, permitindo ao usuário **criar, visualizar, editar e excluir notas** de forma simples e segura.  
 
-A interface foi desenvolvida com **Tailwind CSS** e componentes **shadcn/ui**, inspirada em designs modernos como Notion e Vercel Dashboard.
+A aplicação foi projetada para se integrar a **dois backends distintos** - um utilizando **MongoDB** e outro **PostgreSQL** - possibilitando testar e comparar o comportamento da mesma interface com diferentes bancos de dados.  
+
+O frontend utiliza **Tailwind CSS** e componentes **shadcn/ui**, oferecendo uma experiência moderna e responsiva inspirada em ferramentas como **Notion** e **Vercel Dashboard**.
+
 
 ---
 ## 🟣 Funcionalidades
 
-- ✅ Cadastro e autenticação de usuários com JWT  
-- ✅ Login e logout com controle de sessão  
-- ✅ CRUD completo de notas (criar, visualizar, editar e excluir)  
-- ✅ Busca de notas por título  
-- ✅ Feedback visual com toasts (sucesso e erro)  
-- ✅ Indicadores de carregamento (loading states)  
-- ✅ Proteção de rotas para usuários autenticados  
-- ✅ Redirecionamento automático em token expirado  
-- ✅ Página 404 personalizada  
-- ✅ Layout responsivo para mobile, tablet e desktop 
+O **NotesApp** oferece uma experiência completa de gerenciamento de notas, com autenticação segura, interface responsiva e integração total com o backend.  
+
+###  Autenticação e Sessão
+- Cadastro e login de usuários com **validação de campos**  
+- Autenticação via **JWT (JSON Web Token)**  
+- Armazenamento seguro do token no **LocalStorage**  
+- **Logout** com limpeza automática da sessão  
+- **Redirecionamento automático** para login em caso de token expirado  
+
+###  Gerenciamento de Notas
+- **CRUD completo** (criar, listar, editar e excluir notas)  
+- **Busca de notas por título**  
+- Atualização dinâmica da lista de notas após cada ação  
+- Feedback visual com **toasts** de sucesso e erro  
+
+###  Interface e Experiência do Usuário
+- Layout **responsivo** (mobile, tablet e desktop)  
+- Indicadores de **carregamento (loading states)**  
+- Página **404 personalizada**  
+- Design moderno e minimalista com **Tailwind CSS** e **shadcn/ui**  
+
+###  Integração com Backends
+- Compatibilidade com **dois backends distintos**:
+  -  **MongoDB** – hospedado em Vercel  
+  -  **PostgreSQL** – hospedado em Vercel  
+- Alternância de ambientes via arquivos `.env`  
+- Consumo automático da API configurada conforme o ambiente ativo
 
 ---
 
 ## 🟣 Tecnologias Utilizadas
 
-**Frontend**
-- **React 18** com TypeScript
-- **React Router DOM** para navegação
-- **Axios** para requisições HTTP
-- **Tailwind CSS** para estilização
-- **shadcn/ui** para componentes
-- **Lucide React** para ícones
-- **Sonner** para notificações toast
-- **Context API** para gerenciamento de autenticação
+O projeto **NotesApp** foi desenvolvido utilizando um conjunto de tecnologias modernas que garantem **segurança**, **performance** e **organização** do código.
+
+###  Frontend
+
+| Categoria | Tecnologias | Descrição |
+|------------|-------------|------------|
+| Framework | **React 18 + TypeScript** | Criação de interfaces reativas e tipadas |
+| Estilização | **Tailwind CSS** | Estilo responsivo com utilitários CSS |
+| Componentes | **shadcn/ui** + **Lucide React** | Componentes acessíveis e ícones modernos |
+| Roteamento | **React Router DOM** | Navegação entre páginas e rotas protegidas |
+| HTTP Client | **Axios** | Comunicação com a API e interceptação de tokens |
+| Estado Global | **Context API** | Gerenciamento de autenticação e sessão |
+| Notificações | **Sonner** | Toasts de sucesso, erro e alerta |
+| Build Tool | **Vite** | Empacotamento e execução do ambiente local |
+
+---
+
+###  Backend (Integração)
+
+O frontend consome uma **API REST Node.js/Express**, configurada com autenticação **JWT** e compatível com dois bancos de dados:
+
+| Banco de Dados | Descrição |
+|----------------|------------|
+| **MongoDB (Atlas)** | Utilizado na versão original do backend, com foco em flexibilidade e velocidade |
+| **PostgreSQL (Neon)** | Utilizado na versão relacional do backend, com foco em integridade e tipagem forte |
+
+---
+
+###  Hospedagem e Deploy
+
+| Camada | Plataforma | Observação |
+|--------|-------------|-------------|
+| Frontend | **Vercel** | Deploy automático a partir do GitHub |
+| Backend MongoDB | **Vercel** | API hospedada em ambiente serverless |
+| Backend PostgreSQL | **Vercel** | API paralela para integração relacional |
+| Banco MongoDB | **MongoDB Atlas** | Banco na nuvem gratuito |
+| Banco PostgreSQL | **Neon Database** | Banco relacional escalável e gratuito |
+
 
 ---
 
 ## 🟣 Estrutura de Pastas
 
-Abaixo está a organização dos arquivos e diretórios principais do projeto:
+Abaixo está a organização dos principais diretórios e arquivos do projeto **NotesApp (Frontend)**.
 
-
-```
+```bash
 mini-projeto-fullstack-parte-iii/
-├── node_modules
-├── public 
-├── src/
+├── public                 # Arquivos públicos (index.html, ícones, etc.)
+├── src/                      # Código-fonte principal
 ├── api/
 │   └── api.ts              # Configuração Axios + endpoints
-├── components/
+├── components/                # Componentes reutilizáveis
 │   ├── ProtectedRoute.tsx  # HOC para rotas autenticadas
 │   ├── LoadingSpinner.tsx  # Componente de loading
-│   └── ui/                 # Componentes shadcn
-├── context/
+│   └── ui/                 # Componentes do shadcn/ui
+├── context/              
 │   └── AuthContext.tsx     # Context de autenticação
-├── hooks/
+├── hooks/                        # Hooks personalizados
 |   ├── use-mobile.tsx
 |   ├── use-toast.ts
-|── lib/
+|── lib/                                # Funções utilitárias e helpers
 |   ├── utils.ts
-├── pages/
+├── pages/                    # Páginas principais do sistema
 │   ├── Index.tsx           # Página inicial (landing)
 │   ├── Register.tsx        # Cadastro de usuário
 │   ├── Login.tsx           # Login
 │   ├── Dashboard.tsx       # Área logada (CRUD notas)
-│   └── NotFound.tsx        # 404
+│   └── NotFound.tsx        # Página 404
 ├── App.tsx                 # Rotas principais
-├── App.css
-├── index.css
-└── main.tsx     
-├── .env
-├── .env.mongodb
-├── .env.postgresql     
+├── App.css                 # Estilos globais
+├── index.css                # Estilos base do Tailwind
+└── main.tsx                  # Ponto de entrada do React
+├── .env                          # Arquivo de ambiente ativo
+├── .env.mongodb          # Configuração para backend MongoDB
+├── .env.postgresql         # Configuração para backend PostgreSQL
 ├── .gitignore
-├── index.html
-├── package-lock.json
-└── package.json
+├── index.html                # HTML base da aplicação
+├── package.json               # Dependências e scripts do projeto
+├── tsconfig.json             # Configuração do TypeScript
+└── vite.config.ts            # Configuração do Vite
 ```
 
 ---
@@ -177,9 +225,9 @@ No navegador, execute o fluxo completo:
 
 Após o deploy no **Vercel**, as versões estão disponíveis nos seguintes links:
 
-- **Frontend + MongoDB:** [https://app-notes.nathaliaohana.dev/](https://app-notes.nathaliaohana.dev/)
+- **Frontend + MongoDB:** [https://app-notes.nathaliaohana.dev](https://app-notes.nathaliaohana.dev)
 
-- **Frontend + PostgreSQL:** [https://app-notes-pg.nathaliaohana.dev/](https://app-notes-pg.nathaliaohana.dev/)
+- **Frontend + PostgreSQL:** [https://app-notes-pg.nathaliaohana.dev](https://app-notes-pg.nathaliaohana.dev)
 
 > Ambos se integram automaticamente com seus respectivos backends hospedados.
 
@@ -191,32 +239,67 @@ Para encerrar o servidor local, utilize ```Ctrl + C``` no terminal.
 
 ## 🟣 Integração com Backend
 
-O frontend consome os endpoints do backend hospedado em produção.  
+O **NotesApp** se integra a dois backends REST distintos, desenvolvidos em **Node.js/Express**, que implementam a mesma estrutura de rotas e lógica de autenticação.  
 
-A aplicação será  integrada com o backend **MongoDB**  e **PostgreSQL**:
+O frontend identifica automaticamente qual backend utilizar de acordo com o arquivo `.env` ativo - **MongoDB** ou **PostgreSQL** - permitindo alternar entre os ambientes sem modificações no código-fonte.
 
-- API com PostgreSQL: https://notes-pg.nathaliaohana.dev/
+###  Backends em Produção
 
-- API com MongoDB: https://notes.nathaliaohana.dev
+| Banco de Dados | URL da API | Hospedagem |
+|----------------|-------------|-------------|
+| MongoDB | https://notes.nathaliaohana.dev | Vercel |
+| PostgreSQL | https://notes-pg.nathaliaohana.dev | Vercel |
 
-O frontend espera que o backend forneça os seguintes endpoints:
 
-### Autenticação do Usuário
+
+
+
+### Autenticação
 
 | Endpoint / Rota | Método | Descrição | Autenticação |
 |:--:|:--|:--|:--:|
-| `/register` | POST | Cadastra novo usuário | ❌ |
-| `/login` | POST | Realiza login e retorna token JWT | ❌ |
+| `/register` | POST | Cadastra um novo usuário | ❌ |
+| `/login` | POST | Realiza login e retorna um token JWT e os dados do usuário | ❌ |
 
 ### Notas
 | Endpoint  / Rota| Método | Descrição | Autenticação |
 |:--:|:--|:--|:--:|
-| `/notes` | POST | Cria uma nova nota |    ✅   |
+| `/notes` | POST | Cria uma nova nota vinculada ao usuário |    ✅   |
 | `/notes` | GET | Lista todas as notas do usuário autenticado | ✅ |
-| `/notes?title=...` | GET | Filtra notas por título	 | ✅ |
+| `/notes?title=...` | GET | Filtra notas pelo título informado	 | ✅ |
 | `/notes/:id` | PUT | Atualiza todos os dados de uma nota existente | ✅ |
-| `/notes/:id` | PATCH | Atualiza parcialmente uma nota | ✅ |
+| `/notes/:id` | PATCH | Atualiza parcialmente os dados de uma nota | ✅ |
 | `/notes/:id` | DELETE | Remove uma nota do usuário autenticado | ✅ |
+
+###  Fluxo de Comunicação
+
+1. O usuário realiza **login** → recebe um **token JWT**.  
+2. O token é armazenado no **LocalStorage** e enviado em todas as requisições com o header:  Authorization: Bearer <token>
+3. O backend valida o token e retorna as notas, erros ou confirmações.  
+4. Em caso de token inválido ou expirado, o frontend:
+   - Limpa a sessão,
+   - Redireciona o usuário para `/login`,
+   - Exibe um toast com a mensagem de sessão expirada.
+
+###  Padrão de Resposta
+**Exemplo de resposta de login bem-sucedido:**
+```json
+{
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+"user": {
+ "id": "123",
+ "name": "Nathalia Ohana",
+ "email": "nathalia@email.com"
+}
+}
+```
+
+**Exemplo de resposta de erro:**
+```json
+{
+  "error": "Invalid credentials"
+}
+```
 
 ---
 
@@ -231,8 +314,8 @@ Cada arquivo define a URL base da API e o tipo de backend ativo.
 | Arquivo | Finalidade | Exemplo de Configuração |
 |----------|-------------|--------------------------|
 | `.env` | Ambiente local (teste rápido com backend local) | `VITE_API_URL=http://localhost:3000` |
-| `.env.mongodb` | Produção com backend MongoDB | `VITE_API_URL=https://mini-projeto-fullstack-parte2.vercel.app/` |
-| `.env.postgresql` | Produção com backend PostgreSQL | `VITE_API_URL=https://backend-express-postgresql-flame.vercel.app/` |
+| `.env.mongodb` | Produção com backend MongoDB | `VITE_API_URL=https://mini-projeto-fullstack-parte2.vercel.app` |
+| `.env.postgresql` | Produção com backend PostgreSQL | `VITE_API_URL=https://backend-express-postgresql-flame.vercel.app` |
 
 
 ###  Como Alternar Entre os Ambientes
