@@ -194,7 +194,7 @@ O frontend consome os endpoints do backend hospedado em produção.
 
 A aplicação será  integrada com o backend **MongoDB**  e **PostgreSQL**:
 
-- API com PostgreSQL: https://pg-notes.nathaliaohana.dev
+- API com PostgreSQL: https://notes-pg.nathaliaohana.dev/
 
 - API com MongoDB: https://notes.nathaliaohana.dev
 
