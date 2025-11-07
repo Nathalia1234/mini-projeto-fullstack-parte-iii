@@ -251,7 +251,7 @@ cp .env.postgresql .env
 
 **Exemplo – para testar localmente:**
 ```bash
-cp .env.local .env
+cp .env .env
 ```
 
 > O Vite lerá automaticamente as variáveis do arquivo .env ativo durante a execução.
