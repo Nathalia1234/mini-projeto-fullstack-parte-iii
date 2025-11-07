@@ -70,8 +70,7 @@ mini-projeto-fullstack-parte-iii/
 ├── App.tsx                 # Rotas principais
 ├── App.css
 ├── index.css
-├── main.tsx          
-└── vite-env.d.ts
+└── main.tsx     
 ├── .env
 ├── .env.mongodb
 ├── .env.postgresql     
@@ -79,13 +78,12 @@ mini-projeto-fullstack-parte-iii/
 ├── index.html
 ├── package-lock.json
 └── package.json
-
 ```
 
 ---
 ## 🟣 Instruções de Instalação e Uso
 
-Siga os passos abaixo para executar o projeto localmente:
+Siga os passos abaixo para executar o projeto localmente e conectar ao backend correto:
 
 ### 1. Clonar o Repositório
 
@@ -103,66 +101,67 @@ cd mini-projeto-fullstack-parte-iii
 
 ### 2. Instalar Dependências
 
-Instale as dependências do projeto com o comando:
+Instale as dependências necessárias com:
 
 ```bash
 npm install
 ```
 
-### 3. Configurar o Arquivo .env
+### 3. Configurar o Ambiente
 
-O projeto utiliza diferentes arquivos de ambiente para cada banco de dados.
+O projeto possui três arquivos `.env` prontos, um para cada tipo de ambiente:
 
-Selecione o ambiente desejado:
-- MongoDB local → .env.mongodb
-- PostgreSQL local → .env.postgresql
-- Local (teste) → .env.local
+| Ambiente             | Arquivo           | Descrição                             |
+| -------------------- | ----------------- | ------------------------------------- |
+| Local (teste rápido) | `.env`      | Usa backend local em `localhost:3000` |
+| Produção MongoDB     | `.env.mongodb`    | Aponta para o backend com MongoDB     |
+| Produção PostgreSQL  | `.env.postgresql` | Aponta para o backend com PostgreSQL  |
 
-Exemplo de variável principal esperada:
+
+Para alternar o ambiente, renomeie o arquivo correspondente para `.env` antes de executar o projeto.
+
+Exemplo: 
 ```bash
-VITE_API_URL=http://localhost:3000
+cp .env.mongodb .env
 ```
 
-### 4. Executar o Projeto Localmente
+### 4. Executar o Frontend
 
-Para rodar o frontend, utilize um dos comandos abaixo:
+Após definir o `.env` desejado, execute o comando: 
 
-**MongoDB**
 ```bash
-npm run dev -- --mode mongodb
+npm run dev
+```
+O servidor local do Vite iniciará na porta padrão (geralmente 5173).
+
+Acesse o projeto em:
+
+```bash
+http://localhost:5173
 ```
 
-**PostgreSQL**
-```bash
-npm run dev -- --mode postgresql
-```
-
-O projeto iniciará na porta 8080 ou 5173, dependendo da configuração do Vite.
-
-Acesse no navegador:
-```bash
-http://localhost:8080
-```
-
-### 5. Executar o Backend
+### 5. Executar o Backend (opcional)
 
 Se desejar testar também o backend localmente:
 
-**MongoDB**
+* **MongoDB:**
 ```bash
 cd ../mini-projeto-fullstack-parte2
+npm install
 npm start
 ```
 
-**PostgreSQL**
+* **PostgreSQL:**
 ```bash
 cd ../backend-express-postgresql
+npm install
 npm run dev:local
 ```
+> Certifique-se de que a API está rodando em http://localhost:3000.
 
 ### 6. Testar as Funcionalidades
 
-No navegador, teste as seguintes ações:
+No navegador, execute o fluxo completo:
 
 1. Cadastrar um novo usuário
 2. Fazer login com o usuário cadastrado
@@ -171,16 +170,18 @@ No navegador, teste as seguintes ações:
 5. Buscar Nota pelo Título
 6. Excluir Nota
 7. Fazer Logout
+8. Testar feedbacks visuais (toasts e loadings)
 
 
 ### 7. Executar em Produção
 
-Após o deploy no Vercel, o projeto pode ser acessado pelos seguintes links:
+Após o deploy no **Vercel**, as versões estão disponíveis nos seguintes links:
 
 - **Frontend + MongoDB:** [https://app-notes.nathaliaohana.dev/](https://app-notes.nathaliaohana.dev/)
 
 - **Frontend + PostgreSQL:** [https://app-notes-pg.nathaliaohana.dev/](https://app-notes-pg.nathaliaohana.dev/)
 
+> Ambos se integram automaticamente com seus respectivos backends hospedados.
 
 ### 8. Encerrar o Servidor
 
@@ -221,23 +222,39 @@ O frontend espera que o backend forneça os seguintes endpoints:
 
 ## 🟣 Variáveis de Ambiente (.env)
 
-**.env.local**:
-```env
-VITE_API_URL=http://localhost:3000
-VITE_BACKEND_TYPE=local
+O projeto utiliza arquivos `.env` diferentes para facilitar a alternância entre os backends **MongoDB** e **PostgreSQL**, além do ambiente local de testes.
+
+Cada arquivo define a URL base da API e o tipo de backend ativo.
+
+###  Estrutura de Arquivos de Ambiente
+
+| Arquivo | Finalidade | Exemplo de Configuração |
+|----------|-------------|--------------------------|
+| `.env` | Ambiente local (teste rápido com backend local) | `VITE_API_URL=http://localhost:3000` |
+| `.env.mongodb` | Produção com backend MongoDB | `VITE_API_URL=https://mini-projeto-fullstack-parte2.vercel.app/` |
+| `.env.postgresql` | Produção com backend PostgreSQL | `VITE_API_URL=https://backend-express-postgresql-flame.vercel.app/` |
+
+
+###  Como Alternar Entre os Ambientes
+
+Para alternar o ambiente antes de executar o projeto, basta **renomear ou copiar** o arquivo desejado para `.env`.
+
+**Exemplo – para usar o backend MongoDB:**
+```bash
+cp .env.mongodb .env
 ```
 
-**.env.mongodb**:
+**Exemplo – para usar o backend PostgreSQL:**
+```bash
+cp .env.postgresql .env
+```
 
-```env
-VITE_API_URL=https://mini-projeto-fullstack-parte2.vercel.app/
-VITE_BACKEND_TYPE=mongodb
+**Exemplo – para testar localmente:**
+```bash
+cp .env.local .env
 ```
-**.env.postgresql**:
-```env
-VITE_API_URL=https://backend-express-postgresql-flame.vercel.app/
-VITE_BACKEND_TYPE=postgresql
-```
+
+> O Vite lerá automaticamente as variáveis do arquivo .env ativo durante a execução.
 
 ---
 
@@ -248,6 +265,8 @@ VITE_BACKEND_TYPE=postgresql
 - Redirecionamento automático para **/login** em caso de erro **401**
 - Validação de campos obrigatórios
 - Proteção de rotas com `ProtectedRoute`
+- Quando o token expira, o usuário é automaticamente redirecionado para a tela de login, exibindo um toast de sessão expirada.
+
 
 ---
 
