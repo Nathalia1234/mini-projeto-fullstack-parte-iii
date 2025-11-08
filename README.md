@@ -371,7 +371,79 @@ Vídeo de 3 minutos foi gravado demonstrando:
 
 --- 
 
+## 🟣 Mock Service Worker (MSW)
 
+###  Objetivo
+O **Mock Service Worker (MSW)** foi configurado no projeto **frontend** para simular requisições HTTP durante o desenvolvimento e os testes da aplicação.  Essa configuração permite que a interface funcione normalmente **sem depender de um backend real**, garantindo mais agilidade e estabilidade durante os testes locais.
 
+###  Configuração
 
+Foram seguidos os passos abaixo para a implementação:
+
+1. Instalação do pacote MSW:
+```bash
+   npm install msw --save-dev
+```
+
+2. Inicialização do service worker:
+```bash
+npx msw init public/ --save
+```
+
+3. Criação do arquivo:
+```bash
+src/mocks/handlers.ts
+```
+
+Contendo os endpoints mockados utilizados no projeto:
+
+- POST /api/login → Simula login de usuário e retorna token e nome fictício.
+- POST /api/register → Simula o cadastro de um novo usuário.
+- GET /api/notes → Retorna notas mockadas para exibição no dashboard.
+
+4. Registro do Service Worker no ponto de entrada da aplicação (main.tsx), garantindo que ele seja iniciado apenas em ambiente de desenvolvimento:
+```bash
+if (process.env.NODE_ENV === 'development') {
+  const { worker } = await import('./mocks/browser');
+  worker.start();
+}
+```
+
+### Testes realizados 
+
+Os testes foram feitos no ambiente local para validar o funcionamento do MSW.
+
+### Teste 1 – Inicialização 
+Ao iniciar o projeto, o console exibe a mensagem: 
+```bash
+[MSW] Mocking enabled.
+```
+> Isso confirma que o MSW foi iniciado corretamente.
+
+### Teste 2 – Login e Registro simulados
+
+As requisições para **/api/login** e **/api/register** foram interceptadas com sucesso.
+
+O console exibiu:
+```bash
+Interceptado login: { email: 'nathalia.teste@example.com', password: '123456' }
+Interceptado registro: { name: 'Nathalia Teste', email: nathalia.teste@example.com', password: '123456' }
+```
+> A interface respondeu normalmente com mensagens de sucesso mockadas.
+
+### Teste 3 – Listagem de Notas Mockadas
+A rota **/api/notes** retornou dados simulados:
+```bash
+[
+  { "id": 1, "title": "Nota Mockada 1", "content": "Conteúdo de teste 1" },
+  { "id": 2, "title": "Nota Mockada 2", "content": "Conteúdo de teste 2" }
+]
+```
+> As notas foram exibidas corretamente no dashboard, confirmando a interceptação.
+
+### Como ativar ou desativar o MSW?
+
+- O MSW é ativado automaticamente em ambiente de desenvolvimento utilizando o comando `npm run dev`.
+
+- Para desativar, basta comentar o trecho que inicia o worker no arquivo `main.tsx`.
 
