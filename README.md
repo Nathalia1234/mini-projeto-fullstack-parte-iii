@@ -225,6 +225,10 @@ Após o deploy no **Vercel**, as versões estão disponíveis nos seguintes link
 
 - **Frontend + MongoDB:** [https://app-notes.nathaliaohana.dev](https://app-notes.nathaliaohana.dev)
 
+Usuário para teste:
+  - Email: nathalia.teste@example.com
+  - Senha: 123456
+
 - **Frontend + PostgreSQL:** [https://app-notes-pg.nathaliaohana.dev](https://app-notes-pg.nathaliaohana.dev)
 
 > Ambos se integram automaticamente com seus respectivos backends hospedados.
